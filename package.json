@@ -1,0 +1,22 @@
+{
+  "name": "homework11",
+  "version": "1.0.0",
+  "description": "Monash homework11 - Note taker application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chstrcpprpt/homework11.git"
+  },
+  "author": "Charles Allen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chstrcpprpt/homework11/issues"
+  },
+  "homepage": "https://github.com/chstrcpprpt/homework11#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
