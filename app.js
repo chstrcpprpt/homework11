@@ -12,21 +12,29 @@ app.use(express.static("./public"));
 app.listen(3000);
 console.log("Listening to port 3000");
 
-// routes
+// HTML routes
+// notes
 app.get("/notes", (req, res) => {
   res.render("notes");
 });
 
+// *
 app.get("*", (req, res) => {
   res.render("index");
 });
 
+// API routes
+// GET
+app.get("/api/notes", (req, res) => {
+  
+});
+
 // POST
-app.post("/notes", (req, res) => {
-  res.render("notes");
+app.post("/api/notes", (req, res) => {
+  
 });
 
 // DELETE
-app.delete("/notes", (req, res) => {
+app.delete("/api/notes/:id", (req, res) => {
 
 });
