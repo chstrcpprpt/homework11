@@ -1,33 +1,60 @@
 // control the behavious of the note taker - routes, rendering views
+const bodyParser = require('body-parser');
+const shortid = require("shortid");
+const fs = require("fs");
+const path = require("path");
+
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
+
+// define path
+const dbPath = path.resolve(__dirname, "..","db","db.json");
 
 // import into app.js
 module.exports = app => {
 
-// HTML routes
-// notes
-app.get("/notes", (req, res) => {
-  res.render("notes");
-});
+  // HTML routes
+  // notes
+  app.get("/notes", (req, res) => {
+    res.render("notes");
+  });
 
-// *
-app.get("*", (req, res) => {
-  res.render("index");
-});
+  // *
+  // app.get("*", (req, res) => {
+  //   res.render("index");
+  // });
 
-// API routes
-// GET
-app.get("/api/notes", (req, res) => {
-  
-});
+  // API routes
+  // GET
+  app.get("/api/notes", (req, res) => {
+    // read db.json and return all notes as JSON
+    const jsonFile = fs.readFileSync(dbPath);
+    const db = JSON.parse(jsonFile);
 
-// POST
-app.post("/api/notes", (req, res) => {
-  
-});
+    res.send(db);
 
-// DELETE
-app.delete("/api/notes/:id", (req, res) => {
+    // console.log(db);
+  });
 
-});
+  // POST
+  app.post("/api/notes", urlencodedParser, (req, res) => {
+    // push data to JSON DB file
+    data = req.body;
+    data.id = shortid.generate();
+    // console.log(data);
+
+    const jsonFile = fs.readFileSync(dbPath);
+    const db = JSON.parse(jsonFile);
+
+    db.push(data);
+
+    const writeData = JSON.stringify(db);
+    fs.writeFileSync(dbPath, writeData);
+  });
+
+  // DELETE
+  app.delete("/api/notes/:id", (req, res) => {
+    // #34 about 14:00
+    // filter function through the JSON file and delete if the id == req.params.id
+  });
 
 };
