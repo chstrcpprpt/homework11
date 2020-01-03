@@ -7,7 +7,7 @@ const app = express();
 // setup template engine
 app.set("view engine", "ejs");
 
-// static files middleware
+// static files middleware - access css styles
 app.use(express.static("./public"));
 
 // fire controllers
