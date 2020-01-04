@@ -18,11 +18,6 @@ module.exports = app => {
     res.render("notes");
   });
 
-  // *
-  // app.get("*", (req, res) => {
-  //   res.render("index");
-  // });
-
   // API routes
   // GET
   app.get("/api/notes", (req, res) => {
@@ -31,8 +26,6 @@ module.exports = app => {
     const db = JSON.parse(jsonFile);
 
     res.send(db);
-
-    // console.log(db);
   });
 
   // POST
@@ -53,8 +46,23 @@ module.exports = app => {
 
   // DELETE
   app.delete("/api/notes/:id", (req, res) => {
-    // #34 about 14:00
-    // filter function through the JSON file and delete if the id == req.params.id
+
+    const jsonFile = fs.readFileSync(dbPath);
+    const db = JSON.parse(jsonFile);
+
+    db.filter(notes => {
+      return notes.id !== req.params.id;
+    })
+
+    res.send(db);
+    
+  });
+
+  // *
+  app.get("*", (req, res) => {
+    res.render("index");
   });
 
 };
+
+  
