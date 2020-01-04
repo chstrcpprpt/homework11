@@ -33,7 +33,6 @@ module.exports = app => {
     // push data to JSON DB file
     data = req.body;
     data.id = shortid.generate();
-    // console.log(data);
 
     const jsonFile = fs.readFileSync(dbPath);
     const db = JSON.parse(jsonFile);
@@ -50,11 +49,14 @@ module.exports = app => {
     const jsonFile = fs.readFileSync(dbPath);
     const db = JSON.parse(jsonFile);
 
-    db.filter(notes => {
+    const filtered = db.filter(notes => {
       return notes.id !== req.params.id;
     })
 
-    res.send(db);
+    res.send(filtered);
+
+    const writeData = JSON.stringify(filtered);
+    fs.writeFileSync(dbPath, writeData);
     
   });
 
@@ -64,5 +66,3 @@ module.exports = app => {
   });
 
 };
-
-  
