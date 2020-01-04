@@ -1,24 +1,25 @@
-# homework11
+# homework11 - Note Taker
 
-write, save & delete notes
+1. In Terminal, run:
 
-Use express backend
+npm install
 
-save and retrieve note data from a JSON file
+to install dependencies
 
-The following HTML routes:
-GET /notes - return notes.html file
+2. Start the application by running:
 
-GET * - return index.html file
+node app
 
-app has a db.json file on the backend that will be used to store and retrieve notes using fs module
+in your Terminal window
 
-The following API routes:
-GET /api/notes - read the db.json file and return all saved notes as JSON
+3. Navigate to:
 
-POST /api/notes - receive a new note to save on the request body, add it to the db.json file, return the new note to the client
+localhost:3000
 
-DELETE api/notes/:id - receive a query parameter containing the id of a note to delete. 
-Find a way to give each note a unique id when it is saved
-In order to delete a note, you will need to read all notes from the db.json file, remove the note with a given id property, then rewrite the notes to the db.json file
+to get started
+
+4. Click the pencil icon to enter a new note with a title and text
+The note appears in a list on the left hand side
+
+5. Click the trash can icon next to any note to remove it from the list
 
