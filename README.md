@@ -1,22 +1,16 @@
 # homework11 - Note Taker
 
-1. In Terminal, run:
+1. In Terminal, install dependencies with:
 
 npm install
 
-to install dependencies
-
-2. Start the application by running:
+2. Start the application by running the following in your Terminal window:
 
 node app
 
-in your Terminal window
-
-3. Navigate to:
+3. To access the app, navigate to:
 
 localhost:3000
-
-to get started
 
 4. Click the pencil icon to enter a new note with a title and text
 The note appears in a list on the left hand side
